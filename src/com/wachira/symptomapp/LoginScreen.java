@@ -22,6 +22,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.text.Editable;
 import android.util.Log;
 import android.view.View;
@@ -45,10 +46,25 @@ public class LoginScreen extends Activity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		//prefs = getSharedPreferences("SymptomApp", MODE_PRIVATE); 
+		prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+		boolean loggedIn = prefs.getBoolean(getString(R.string.isauthenticated_key), false);
+		String user = prefs.getString(getString(R.string.username_key), null);
+		String pass = prefs.getString(getString(R.string.pass_key), null);
+		Log.d(TAG, " isauthenticated key and value are:"+ getString(R.string.isauthenticated_key) + ": " + loggedIn);
+		//Log.d(TAG, "User is logged in ");
+		//Log.d(TAG, "User is logged in ");
+		if (loggedIn){
+			Log.d(TAG, "User is logged in ");
+			performPostLoginAtivity(CheckinActivity.class, user, pass);
+		}
+		Log.d(TAG, "Before setcontent ");
 		setContentView(R.layout.loginscreen);
+		Log.d(TAG, "Before butterknnife ");
 		ButterKnife.inject(this);
-		prefs = getPreferences(MODE_PRIVATE);
-		
+		Log.d(TAG, "after butterknife ");
+
+
 
 	}
 	
@@ -56,7 +72,8 @@ public class LoginScreen extends Activity {
 	public void PatientLogin() {
 		final String user = uname.getText().toString();
 		final String pass = passwd.getText().toString();
-		final CheckinSvcApi svc = CheckinSvc.init(ChekinSvcUrl, user, pass,this.getApplicationContext());
+		performPostLoginAtivity(CheckinActivity.class, user, pass);
+	/*	final CheckinSvcApi svc = CheckinSvc.init(ChekinSvcUrl, user, pass,this.getApplicationContext());
 
 		CallableTask.invoke(new Callable<OkResponse>() {
 
@@ -86,7 +103,7 @@ public class LoginScreen extends Activity {
 						"Login failed, check your Internet connection and credentials.",
 						Toast.LENGTH_SHORT).show();
 			}
-		});
+		});*/
 	}
 	
 	@OnClick(R.id.BtnDocLogin)
@@ -98,8 +115,38 @@ public class LoginScreen extends Activity {
 		startActivity(ckinIntent);
 	}
 	
-	private void performPostLoginAtivity(Class activityClass){
-		
+	private void performPostLoginAtivity( final Class activity, String user, String pass){
+		final CheckinSvcApi svc = CheckinSvc.init(ChekinSvcUrl, user, pass,this.getApplicationContext());
+
+		CallableTask.invoke(new Callable<OkResponse>() {
+
+			@Override
+			public OkResponse call() throws Exception {
+				return svc.authenticateUser();
+			}
+		}, new TaskCallback<OkResponse>() {
+
+			@Override
+			public void success(OkResponse result) {
+				
+				// OAuth 2.0 grant was successful and we
+				// can talk to the server, open up the video listing
+				
+				startActivity(new Intent(
+						LoginScreen.this,
+						activity));
+			}
+			
+			@Override
+			public void error(Exception e) {
+				Log.e(LoginScreen.class.getName(), "Error logging in via OAuth.", e);
+				
+				Toast.makeText(
+						LoginScreen.this,
+						"Login failed, check your Internet connection and credentials.",
+						Toast.LENGTH_SHORT).show();
+			}
+		});
 	}
 
 }

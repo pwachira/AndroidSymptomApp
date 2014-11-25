@@ -20,7 +20,7 @@ public class SymptomAlarm {
 	private Context context;
 	private long alarmInterval;
 	private int isAlarmSetKey = R.string.is_alarm_set_key;
-	private long default_next_alarm =   6 *60*1000;
+	private long default_next_alarm =   6 *60 *60*1000;
 
 	
 	public SymptomAlarm(SharedPreferences sharedPref,AlarmManager mAlarmManager,Context context){

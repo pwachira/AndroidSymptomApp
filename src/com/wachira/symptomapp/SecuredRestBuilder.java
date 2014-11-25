@@ -147,7 +147,7 @@ public class SecuredRestBuilder extends RestAdapter.Builder {
 						// Add the access_token to this request as the "Authorization"
 						// header.
 						request.addHeader("Authorization", "Bearer " + accessToken);	
-						Editor editor = (Editor) PreferenceManager.getDefaultSharedPreferences(context);
+						Editor editor = (Editor) PreferenceManager.getDefaultSharedPreferences(context).edit();
 						editor.putString(context.getString(R.string.username_key), username);
 						editor.putString(context.getString(R.string.pass_key), password);
 						editor.putString(context.getString(R.string.token_key), accessToken);

@@ -32,16 +32,19 @@ public class CheckinSvc {
 	}*/
 
 	public static synchronized CheckinSvcApi init(String server, String user,
-			String pass) {
+			String pass, Context context) {
 
 		videoSvc_ = new SecuredRestBuilder()
 				.setLoginEndpoint(server + CheckinSvcApi.TOKEN_PATH)
 				.setUsername(user)
 				.setPassword(pass)
+				.setContext(context)
 				.setClientId(CLIENT_ID)
 				.setClient(
 						new ApacheClient(new EasyHttpClient()))
-				.setEndpoint(server).setLogLevel(LogLevel.FULL).build()
+				.setEndpoint(server).setLogLevel(LogLevel.FULL)
+				
+				.build()
 				.create(CheckinSvcApi.class);
 
 		return videoSvc_;

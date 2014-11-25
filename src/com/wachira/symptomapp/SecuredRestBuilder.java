@@ -27,6 +27,9 @@ import retrofit.client.Request;
 import retrofit.client.Response;
 import retrofit.converter.Converter;
 import retrofit.mime.FormUrlEncodedTypedOutput;
+import android.content.Context;
+import android.content.SharedPreferences.Editor;
+import android.preference.PreferenceManager;
 
 import com.google.common.io.BaseEncoding;
 import com.google.gson.Gson;
@@ -64,9 +67,10 @@ public class SecuredRestBuilder extends RestAdapter.Builder {
 		private String clientId;
 		private String clientSecret;
 		private String accessToken;
+		private Context context;
 
 		public OAuthHandler(Client client, String tokenIssuingEndpoint, String username,
-				String password, String clientId, String clientSecret) {
+				String password, String clientId, String clientSecret, Context context) {
 			super();
 			this.client = client;
 			this.tokenIssuingEndpoint = tokenIssuingEndpoint;
@@ -74,6 +78,7 @@ public class SecuredRestBuilder extends RestAdapter.Builder {
 			this.password = password;
 			this.clientId = clientId;
 			this.clientSecret = clientSecret;
+			this.context  = context;
 		}
 
 		/**
@@ -142,7 +147,12 @@ public class SecuredRestBuilder extends RestAdapter.Builder {
 						// Add the access_token to this request as the "Authorization"
 						// header.
 						request.addHeader("Authorization", "Bearer " + accessToken);	
-						
+						Editor editor = (Editor) PreferenceManager.getDefaultSharedPreferences(context);
+						editor.putString(context.getString(R.string.username_key), username);
+						editor.putString(context.getString(R.string.pass_key), password);
+						editor.putString(context.getString(R.string.token_key), accessToken);
+						editor .putBoolean(context.getString(R.string.isauthenticated_key), true);
+						editor.commit();				
 						// Let future calls know we've already fetched the access token
 						loggedIn = true;
 					}
@@ -165,6 +175,7 @@ public class SecuredRestBuilder extends RestAdapter.Builder {
 	private String clientId;
 	private String clientSecret = "";
 	private Client client;
+	private Context context;
 	
 	public SecuredRestBuilder setLoginEndpoint(String endpoint){
 		loginUrl = endpoint;
@@ -259,7 +270,10 @@ public class SecuredRestBuilder extends RestAdapter.Builder {
 		return this;
 	}
 	
-		
+	public SecuredRestBuilder setContext(Context context) {
+		this.context = context;
+		return this;
+	}		
 
 	@Override
 	public RestAdapter build() {
@@ -272,7 +286,7 @@ public class SecuredRestBuilder extends RestAdapter.Builder {
 		if (client == null) {
 			client = new OkClient();
 		}
-		OAuthHandler hdlr = new OAuthHandler(client, loginUrl, username, password, clientId, clientSecret);
+		OAuthHandler hdlr = new OAuthHandler(client, loginUrl, username, password, clientId, clientSecret,context);
 		setRequestInterceptor(hdlr);
 
 		return super.build();

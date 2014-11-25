@@ -17,6 +17,7 @@ import com.wachira.symptomapp.R;
 import com.wachira.symptomapp.services.*;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -55,7 +56,7 @@ public class LoginScreen extends Activity {
 	public void PatientLogin() {
 		final String user = uname.getText().toString();
 		final String pass = passwd.getText().toString();
-		final CheckinSvcApi svc = CheckinSvc.init(ChekinSvcUrl, user, pass);
+		final CheckinSvcApi svc = CheckinSvc.init(ChekinSvcUrl, user, pass,this.getApplicationContext());
 
 		CallableTask.invoke(new Callable<OkResponse>() {
 
@@ -68,11 +69,6 @@ public class LoginScreen extends Activity {
 			@Override
 			public void success(OkResponse result) {
 				
-				//save prefs
-				Editor editor = prefs.edit();
-				editor.putString(getString(R.string.patient_username_key), user);
-				editor.putString(getString(R.string.patient_username_key), pass);
-				editor.commit();
 				// OAuth 2.0 grant was successful and we
 				// can talk to the server, open up the video listing
 				
@@ -100,6 +96,10 @@ public class LoginScreen extends Activity {
 		Log.d(TAG, "Doc Login");
 		Intent ckinIntent = new Intent(this, CheckinActivity.class);
 		startActivity(ckinIntent);
+	}
+	
+	private void performPostLoginAtivity(Class activityClass){
+		
 	}
 
 }

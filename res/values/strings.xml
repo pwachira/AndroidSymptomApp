@@ -16,9 +16,12 @@
     <string name="Instructions">Please Answer the Questions Below</string>
     <string name="is_alarm_set_key">AlarmKey</string>
 	<string name="next_alarm_time">NextAlarmTime</string>
-	<string name="patient_username_key">PatientUserName</string>
-	<string name="patient_pass_key">PatientUserName</string>
-	<string name="doc_username_key">DoctorUserName</string>
-	<string name="doc_pass_key">PatientUserName</string>
+	<string name="username_key">PatientUserName</string>
+	<string name="pass_key">PatientUserName</string>
+	<string name="token_key">PatientUserName</string>	
+	<string name="isauthenticated_key">IsAuthenticatedKey</string>
+	
+<!-- 	<string name="doc_username_key">DoctorUserName</string>
+	<string name="doc_pass_key">PatientUserName</string> -->
 	
 </resources>

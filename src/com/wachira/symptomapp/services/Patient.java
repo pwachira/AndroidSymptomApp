@@ -16,9 +16,9 @@ public class Patient implements Serializable {
 	private String userName;
 
 
-	private List<Checkin> checkins;
+	private List<CheckinDTO> checkins;
 
-	private List<MedicationHistory> medicationHistories;
+	private List<MedicationHistoryDTO> medicationHistories;
 
 	private Doctor doctor;
 
@@ -62,44 +62,44 @@ public class Patient implements Serializable {
 
 
 
-	public List<Checkin> getCheckins() {
+	public List<CheckinDTO> getCheckins() {
 		return this.checkins;
 	}
 
-	public void setCheckins(List<Checkin> checkins) {
+	public void setCheckins(List<CheckinDTO> checkins) {
 		this.checkins = checkins;
 	}
 
-	public Checkin addCheckin(Checkin checkin) {
+	public CheckinDTO addCheckin(CheckinDTO checkin) {
 		getCheckins().add(checkin);
 		checkin.setPatient(this);
 
 		return checkin;
 	}
 
-	public Checkin removeCheckin(Checkin checkin) {
+	public CheckinDTO removeCheckin(CheckinDTO checkin) {
 		getCheckins().remove(checkin);
 		checkin.setPatient(null);
 
 		return checkin;
 	}
 
-	public List<MedicationHistory> getMedicationHistories() {
+	public List<MedicationHistoryDTO> getMedicationHistories() {
 		return this.medicationHistories;
 	}
 
-	public void setMedicationHistories(List<MedicationHistory> medicationHistories) {
+	public void setMedicationHistories(List<MedicationHistoryDTO> medicationHistories) {
 		this.medicationHistories = medicationHistories;
 	}
 
-	public MedicationHistory addMedicationHistory(MedicationHistory medicationHistory) {
+	public MedicationHistoryDTO addMedicationHistory(MedicationHistoryDTO medicationHistory) {
 		getMedicationHistories().add(medicationHistory);
 		medicationHistory.setPatient(this);
 
 		return medicationHistory;
 	}
 
-	public MedicationHistory removeMedicationHistory(MedicationHistory medicationHistory) {
+	public MedicationHistoryDTO removeMedicationHistory(MedicationHistoryDTO medicationHistory) {
 		getMedicationHistories().remove(medicationHistory);
 		medicationHistory.setPatient(null);
 

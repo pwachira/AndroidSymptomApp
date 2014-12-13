@@ -3,21 +3,53 @@
 
     <string name="hello">Hello Android!</string>
     <string name="app_name">Symptom Manager</string>
+    <string name="title_activity_checkin">Checkin</string>
+    <string name="loginactivity_name">Symptom Manager</string>
     <string name="username_string">UserName</string>
     <string name="password_string">Password</string>
     <string name="enter_username_hint">Enter username</string>
     <string name="enter_password_hint">Enter Password</string>
     <string name="patient_login_string">PatientLogin</string>
     <string name="doctor_login_string">DoctorLogin</string>
-    <string name="title_activity_checkin">CheckinActivity</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">AppSettings</string>
+    <string name="action_settings">Settings</string>
     <string name="checkin_service_url">https://localhost:8443/</string>
     <string name="Instructions">Please Answer the Questions Below</string>
     <string name="is_alarm_set_key">AlarmKey</string>
-	<string name="next_alarm_time">NextAlarmTime</string>
-	<string name="username_key">UserNameKey</string>
-	<string name="pass_key">PassKey</string>
-	<string name="token_key">TokenKey</string>	
-	<string name="isauthenticated_key">IsAuthenticatedKey</string>
+    <string name="next_alarm_time">NextAlarmTime</string>
+    <string name="username_key">UserNameKey</string>
+    <string name="pass_key">PassKey</string>
+    <string name="token_key">TokenKey</string>
+    <string name="isauthenticated_key">IsAuthenticatedKey</string>
+    <string name="meds_fetched_key">MedsFetched</string>
+    <string name="patients_fetched_key">PatientsFetched</string>
+    <string name="question_pain">How bad is your mouth pain/sore throat?</string>
+    <string name="question_meds">Did you take your pain medication?</string>
+    <string name="question_eating">Does your pain stop you from eating/drinking?</string>
+    <string name="question_med_taken">Did you take your </string>
+    <string name="question_meddate">When did you take your</string>
+    <string name="pick_time">Time</string>
+    <string name="pick_date">Date</string>
+    <string name="submit_med_detail">Submit</string>
+    <string name="submit_checkin">Submit</string>
+
+    <string-array name="responses_pain">
+        <item>well-controlled</item>
+        <item>moderate</item>
+        <item>severe</item>
+    </string-array>
+    <string-array name="responses_meds_taken">
+        <item>yes</item>
+        <item>no</item>
+    </string-array>
+    <string-array name="responses_eating">
+        <item>no</item>
+        <item>some</item>
+        <item>I can\'t eat</item>
+    </string-array>
+
+    <string name="title_activity_patients_checkins_list">PatientsCheckinsListActivity</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_doctor">View Patients Checkins</string>
+    <string name="title_activity_home">Symptom Manager</string>
+
 </resources>

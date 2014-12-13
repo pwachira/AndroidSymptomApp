@@ -1,14 +1,12 @@
-package com.wachira.symptomapp.services;
+/*
+ * package com.wachira.symptomapp.services;
+ 
 
 import java.io.Serializable;
 
 import java.util.List;
 
 
-/**
- * The persistent class for the medication database table.
- * 
- */
 public class Medication implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -59,4 +57,4 @@ public class Medication implements Serializable {
 		return medicationHistory;
 	}
 
-}
+}*/

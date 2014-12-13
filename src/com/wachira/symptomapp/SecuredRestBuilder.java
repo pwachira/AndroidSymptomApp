@@ -26,6 +26,7 @@ import retrofit.client.OkClient;
 import retrofit.client.Request;
 import retrofit.client.Response;
 import retrofit.converter.Converter;
+import retrofit.converter.GsonConverter;
 import retrofit.mime.FormUrlEncodedTypedOutput;
 import android.content.Context;
 import android.content.SharedPreferences.Editor;
@@ -33,6 +34,7 @@ import android.preference.PreferenceManager;
 
 import com.google.common.io.BaseEncoding;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 
 /**
@@ -288,7 +290,9 @@ public class SecuredRestBuilder extends RestAdapter.Builder {
 		}
 		OAuthHandler hdlr = new OAuthHandler(client, loginUrl, username, password, clientId, clientSecret,context);
 		setRequestInterceptor(hdlr);
-
+		setConverter(new GsonConverter(
+				new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ").create()));
+		setLogLevel(RestAdapter.LogLevel.FULL);
 		return super.build();
 	}
 }

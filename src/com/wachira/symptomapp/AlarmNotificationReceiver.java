@@ -29,15 +29,9 @@ public class AlarmNotificationReceiver extends BroadcastReceiver {
 	private Intent mNotificationIntent;
 	private PendingIntent mContentIntent;
 
-	// Notification Sound and Vibration on Arrival
-	/*private Uri soundURI = Uri
-			.parse("android.resource://course.examples.Alarms.AlarmCreate/"
-					+ R.raw.alarm_rooster);
-					*/
+
 	private long[] mVibratePattern = { 0, 200, 200, 300 };
 	private AlarmManager mAlarmManager;
-	private long alarmInterval;
-	private long default_interval = 20 *1000;;
 	private SharedPreferences prefs;
 	private SymptomAlarm symptomAlarm;
 	
@@ -48,8 +42,7 @@ public class AlarmNotificationReceiver extends BroadcastReceiver {
 		mContentIntent = PendingIntent.getActivity(context, 0,
 				mNotificationIntent, Intent.FLAG_ACTIVITY_NEW_TASK);
 		 prefs = PreferenceManager.getDefaultSharedPreferences(context);
-	// then you use
-	    alarmInterval = prefs.getLong(context.getString(R.string.next_alarm_time), default_interval);
+
 	    mAlarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
 	    symptomAlarm = new SymptomAlarm(prefs, mAlarmManager, context);
 		

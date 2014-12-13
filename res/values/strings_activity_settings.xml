@@ -1,0 +1,20 @@
+<resources>
+
+    <string name="toggle_alarm">Turn the alarm on or off</string>
+    <string name="title_alarm_times">SymptomCheckin Frequency</string>
+    <string name="alarm_freq">alarm_freq</string>
+    
+    <string-array name="alarm_times_a_day">
+        <item>4 times a day</item>
+        <item>6 times a day</item>
+        <item>8 times a day</item>
+        <item>Never</item>
+    </string-array>
+    <string-array name="alarm_values">
+        <item>4</item>
+        <item>6</item>
+        <item>8</item>
+        <item>0</item>
+    </string-array>
+
+</resources>

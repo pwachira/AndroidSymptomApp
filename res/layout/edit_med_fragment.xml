@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    <Space
+  android:layout_width="match_parent"
+  android:layout_height="30dp"/>
+<LinearLayout
+     android:orientation="horizontal"
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content">
+      <TextView
+        android:id="@+id/textViewqMedTaken"
+        android:layout_width="0dp"
+        android:layout_weight="0.6"
+        android:layout_gravity="start"
+        android:layout_height="wrap_content"
+        android:text="@string/question_med_taken"
+        android:textAppearance="?android:attr/textAppearanceMedium" />  
+
+       <Spinner
+           android:id="@+id/spinnerqmedtaken"
+           android:layout_width="0dp"
+           android:layout_weight="0.4"
+           android:layout_height="wrap_content"
+           android:layout_gravity="end"
+           android:entries="@array/responses_meds_taken" />
+    
+</LinearLayout>
+<Space
+  android:layout_width="match_parent"
+  android:layout_height="30dp"/>
+<LinearLayout
+    android:orientation="horizontal"
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content">
+       <TextView
+        android:id="@+id/textViewqmeddate"
+        android:layout_width="0dp"
+        android:layout_weight="0.6"
+        android:layout_gravity="start"
+        android:layout_height="wrap_content"
+        android:text="@string/question_meddate"
+        android:textAppearance="?android:attr/textAppearanceMedium" />  
+
+<RelativeLayout
+    android:layout_width="0dp"
+    android:layout_weight="0.2"
+    android:layout_height="wrap_content">
+
+       <Button 
+    android:layout_width="wrap_content" 
+    style="?android:attr/buttonBarButtonStyle"
+    android:layout_height="wrap_content"
+    android:text="@string/pick_time" 
+    android:onClick="showTimePickerDialog" />
+    
+</RelativeLayout>
+
+<RelativeLayout
+    android:layout_width="0dp"
+     android:layout_weight="0.2"
+    android:layout_height="wrap_content" >
+
+    <Button 
+    android:layout_width="wrap_content" 
+    style="?android:attr/buttonBarButtonStyle"
+    android:layout_height="wrap_content"
+    android:text="@string/pick_date" 
+    android:onClick="showDatePickerDialog" />
+      </RelativeLayout>
+	</LinearLayout>
+	
+	<Space
+  android:layout_width="match_parent"
+  android:layout_height="30dp"/>
+	
+       <Button 
+    android:layout_width="match_parent" 
+    style="?android:attr/buttonBarButtonStyle"
+    android:layout_height="wrap_content"
+    android:text="@string/submit_med_detail" 
+    android:onClick="submitMedDetail" />
+</LinearLayout>

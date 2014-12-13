@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    <Space
+  android:layout_width="match_parent"
+  android:layout_height="30dp"/>
+<LinearLayout
+     android:orientation="horizontal"
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content">
+      <TextView
+        android:id="@+id/textViewqpain"
+        android:layout_width="0dp"
+        android:layout_weight="0.6"
+        android:layout_gravity="start"
+        android:layout_height="wrap_content"
+ 
+        android:text="@string/question_pain"
+        android:textAppearance="?android:attr/textAppearanceMedium" />  
+
+       <Spinner
+           android:id="@+id/spinnerqpain"
+           android:layout_width="0dp"
+           android:layout_weight="0.4"
+           android:layout_height="wrap_content"
+           android:layout_gravity="end"
+ 
+           android:entries="@array/responses_pain" />
+    
+</LinearLayout>
+<Space
+  android:layout_width="match_parent"
+  android:layout_height="30dp"/>
+<LinearLayout
+    android:orientation="horizontal"
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content">
+       <TextView
+        android:id="@+id/textViewqeating"
+        android:layout_width="0dp"
+        android:layout_weight="0.6"
+        android:layout_gravity="start"
+        android:layout_height="wrap_content"
+
+        android:text="@string/question_eating"
+        android:textAppearance="?android:attr/textAppearanceMedium" />  
+
+       <Spinner
+           android:id="@+id/spinnerqeating"
+           android:layout_width="0dp"
+           android:layout_weight="0.4"
+           android:layout_height="wrap_content"
+           android:layout_gravity="end"
+           android:entries="@array/responses_eating" />
+     
+</LinearLayout>
+<Space
+  android:layout_width="match_parent"
+  android:layout_height="30dp"/>
+<LinearLayout
+    android:orientation="horizontal"
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content">
+       <TextView
+        android:id="@+id/textViewqmeds"
+        android:layout_width="0dp"
+        android:layout_weight="0.6"
+        android:layout_gravity="start"
+        android:layout_height="wrap_content"
+
+        android:text="@string/question_meds"
+        android:textAppearance="?android:attr/textAppearanceMedium" />  
+
+       <Switch
+           android:id="@+id/switchqmeds"
+           android:layout_width="0dp"
+           android:layout_weight="0.4"
+           android:layout_height="wrap_content"
+           android:layout_gravity="end"
+           android:textOn="Yes"
+           android:textOff="No"  
+           android:onClick="onToggleClicked"/>
+     
+</LinearLayout>
+       <Button 
+    android:id="@+id/submitCheckin"
+    android:layout_width="match_parent" 
+    style="?android:attr/buttonBarButtonStyle"
+    android:layout_height="wrap_content"
+    android:text="@string/submit_checkin" 
+   />
+</LinearLayout>
